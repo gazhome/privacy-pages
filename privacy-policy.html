@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy Policy for ERP App - Your privacy is important to us">
+    <title>Privacy Policy - ERP App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --bg-gradient-start: #0f172a;
+            --bg-gradient-end: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --card-border: rgba(148, 163, 184, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body[dir="rtl"] {
+            font-family: 'Cairo', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* Animated background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            animation: backgroundShift 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes backgroundShift {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        /* Language Toggle */
+        .language-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            gap: 0.5rem;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            padding: 0.5rem;
+            box-shadow: 0 8px 32px var(--shadow-color);
+        }
+
+        body[dir="rtl"] .language-toggle {
+            right: auto;
+            left: 2rem;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1.25rem;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 4rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            font-weight: 400;
+        }
+
+        .last-updated {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        /* Content Card */
+        .content-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px var(--shadow-color);
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 1.75rem;
+            background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 2px;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin: 1.5rem 0 0.75rem;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        li {
+            color: var(--text-secondary);
+            padding: 0.5rem 0 0.5rem 1.5rem;
+            position: relative;
+            line-height: 1.8;
+        }
+
+        li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        body[dir="rtl"] li {
+            padding: 0.5rem 1.5rem 0.5rem 0;
+        }
+
+        body[dir="rtl"] li::before {
+            content: '←';
+            left: auto;
+            right: 0;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: var(--accent-color);
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0 3rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        /* Hidden class for language toggle */
+        .hidden {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .content-card {
+                padding: 1.5rem;
+                border-radius: 16px;
+            }
+
+            .language-toggle {
+                top: 1rem;
+                right: 1rem;
+            }
+
+            body[dir="rtl"] .language-toggle {
+                left: 1rem;
+            }
+
+            h2 {
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Smooth transitions */
+        * {
+            transition: color 0.3s ease, background-color 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Language Toggle -->
+    <div class="language-toggle">
+        <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
+        <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
+    </div>
+
+    <div class="container">
+        <!-- English Version -->
+        <div id="content-en">
+            <header>
+                <div class="logo">🔒</div>
+                <h1>Privacy Policy</h1>
+                <p class="subtitle">Your privacy is important to us</p>
+                <span class="last-updated">Last Updated: November 30, 2025</span>
+            </header>
+
+            <div class="content-card">
+                <section class="section">
+                    <h2>Introduction</h2>
+                    <p>Welcome to ERP App. We are committed to protecting your personal information and your right to
+                        privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your
+                        information when you use our mobile application.</p>
+                    <p>Please read this privacy policy carefully. If you do not agree with the terms of this privacy
+                        policy, please do not access the application.</p>
+                </section>
+
+                <section class="section">
+                    <h2>Information We Collect</h2>
+                    <h3>Personal Information</h3>
+                    <p>We may collect personal information that you voluntarily provide to us when you:</p>
+                    <ul>
+                        <li>Register for an account</li>
+                        <li>Use the application features</li>
+                        <li>Contact us for support</li>
+                        <li>Participate in surveys or promotions</li>
+                    </ul>
+
+                    <h3>Automatically Collected Information</h3>
+                    <p>When you use our application, we may automatically collect certain information, including:</p>
+                    <ul>
+                        <li>Device information (model, operating system, unique device identifiers)</li>
+                        <li>Usage data (features used, time spent, interactions)</li>
+                        <li>Log data (IP address, access times, app crashes)</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2>How We Use Your Information</h2>
+                    <p>We use the information we collect to:</p>
+                    <ul>
+                        <li>Provide, operate, and maintain our application</li>
+                        <li>Improve, personalize, and expand our services</li>
+                        <li>Understand and analyze how you use our application</li>
+                        <li>Develop new products, services, features, and functionality</li>
+                        <li>Communicate with you for customer service and support</li>
+                        <li>Send you updates, security alerts, and administrative messages</li>
+                        <li>Prevent fraud and enhance security</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2>Data Security</h2>
+                    <p>We implement appropriate technical and organizational security measures to protect your personal
+                        information. However, please note that no method of transmission over the internet or electronic
+                        storage is 100% secure.</p>
+                    <p>We use industry-standard encryption and security protocols to safeguard your data.</p>
+                </section>
+
+                <section class="section">
+                    <h2>Data Retention</h2>
+                    <p>We will retain your personal information only for as long as necessary to fulfill the purposes
+                        outlined in this Privacy Policy, unless a longer retention period is required or permitted by
+                        law.</p>
+                </section>
+
+                <section class="section">
+                    <h2>Your Privacy Rights</h2>
+                    <p>Depending on your location, you may have the following rights:</p>
+                    <ul>
+                        <li>Access to your personal information</li>
+                        <li>Correction of inaccurate data</li>
+                        <li>Deletion of your personal information</li>
+                        <li>Objection to processing of your data</li>
+                        <li>Data portability</li>
+                        <li>Withdrawal of consent</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2>Third-Party Services</h2>
+                    <p>Our application may contain links to third-party websites or services. We are not responsible for
+                        the privacy practices of these third parties. We encourage you to review their privacy policies.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h2>Children's Privacy</h2>
+                    <p>Our application is not intended for children under the age of 13. We do not knowingly collect
+                        personal information from children under 13. If you believe we have collected information from a
+                        child under 13, please contact us immediately.</p>
+                </section>
+
+                <section class="section">
+                    <h2>Changes to This Privacy Policy</h2>
+                    <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with
+                        an updated revision date. We encourage you to review this Privacy Policy periodically.</p>
+                </section>
+
+                <section class="section">
+                    <h2>Contact Us</h2>
+                    <p>If you have any questions or concerns about this Privacy Policy, please contact us:</p>
+                    <div class="contact-info">
+                        <p><strong>Phone:</strong> <a href="tel:+966557566573">+966 55 756 6573</a></p>
+                        <p><strong>Email:</strong> <a href="mailto:tariqtaha22@icloud.com">tariqtaha22@icloud.com</a>
+                        </p>
+                        <p><strong>Email:</strong> <a href="mailto:info@as-it.com.sa">info@as-it.com.sa</a></p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <!-- Arabic Version -->
+        <div id="content-ar" class="hidden">
+            <header>
+                <div class="logo">🔒</div>
+                <h1>سياسة الخصوصية</h1>
+                <p class="subtitle">خصوصيتك مهمة بالنسبة لنا</p>
+                <span class="last-updated">آخر تحديث: 30 نوفمبر 2025</span>
+            </header>
+
+            <div class="content-card">
+                <section class="section">
+                    <h2>المقدمة</h2>
+                    <p>مرحباً بك في تطبيق ERP. نحن ملتزمون بحماية معلوماتك الشخصية وحقك في الخصوصية. توضح سياسة الخصوصية
+                        هذه كيفية جمع معلوماتك واستخدامها والكشف عنها وحمايتها عند استخدام تطبيق الهاتف المحمول الخاص
+                        بنا.</p>
+                    <p>يرجى قراءة سياسة الخصوصية هذه بعناية. إذا كنت لا توافق على شروط سياسة الخصوصية هذه، يرجى عدم
+                        الوصول إلى التطبيق.</p>
+                </section>
+
+                <section class="section">
+                    <h2>المعلومات التي نجمعها</h2>
+                    <h3>المعلومات الشخصية</h3>
+                    <p>قد نجمع المعلومات الشخصية التي تقدمها طوعاً عندما:</p>
+                    <ul>
+                        <li>تسجل حساباً جديداً</li>
+                        <li>تستخدم ميزات التطبيق</li>
+                        <li>تتواصل معنا للحصول على الدعم</li>
+                        <li>تشارك في الاستطلاعات أو العروض الترويجية</li>
+                    </ul>
+
+                    <h3>المعلومات المجمعة تلقائياً</h3>
+                    <p>عند استخدام تطبيقنا، قد نجمع تلقائياً معلومات معينة، بما في ذلك:</p>
+                    <ul>
+                        <li>معلومات الجهاز (الطراز، نظام التشغيل، معرفات الجهاز الفريدة)</li>
+                        <li>بيانات الاستخدام (الميزات المستخدمة، الوقت المستغرق، التفاعلات)</li>
+                        <li>بيانات السجل (عنوان IP، أوقات الوصول، أعطال التطبيق)</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2>كيف نستخدم معلوماتك</h2>
+                    <p>نستخدم المعلومات التي نجمعها من أجل:</p>
+                    <ul>
+                        <li>توفير تطبيقنا وتشغيله وصيانته</li>
+                        <li>تحسين خدماتنا وتخصيصها وتوسيعها</li>
+                        <li>فهم وتحليل كيفية استخدامك لتطبيقنا</li>
+                        <li>تطوير منتجات وخدمات وميزات ووظائف جديدة</li>
+                        <li>التواصل معك لخدمة العملاء والدعم</li>
+                        <li>إرسال التحديثات والتنبيهات الأمنية والرسائل الإدارية</li>
+                        <li>منع الاحتيال وتعزيز الأمان</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2>أمان البيانات</h2>
+                    <p>نطبق تدابير أمنية تقنية وتنظيمية مناسبة لحماية معلوماتك الشخصية. ومع ذلك، يرجى ملاحظة أنه لا توجد
+                        طريقة نقل عبر الإنترنت أو تخزين إلكتروني آمنة بنسبة 100٪.</p>
+                    <p>نستخدم التشفير وبروتوكولات الأمان المعيارية في الصناعة لحماية بياناتك.</p>
+                </section>
+
+                <section class="section">
+                    <h2>الاحتفاظ بالبيانات</h2>
+                    <p>سنحتفظ بمعلوماتك الشخصية فقط طالما كان ذلك ضرورياً لتحقيق الأغراض الموضحة في سياسة الخصوصية هذه،
+                        ما لم تكن هناك حاجة أو إذن بفترة احتفاظ أطول بموجب القانون.</p>
+                </section>
+
+                <section class="section">
+                    <h2>حقوق الخصوصية الخاصة بك</h2>
+                    <p>اعتماداً على موقعك، قد يكون لديك الحقوق التالية:</p>
+                    <ul>
+                        <li>الوصول إلى معلوماتك الشخصية</li>
+                        <li>تصحيح البيانات غير الدقيقة</li>
+                        <li>حذف معلوماتك الشخصية</li>
+                        <li>الاعتراض على معالجة بياناتك</li>
+                        <li>قابلية نقل البيانات</li>
+                        <li>سحب الموافقة</li>
+                    </ul>
+                </section>
+
+                <section class="section">
+                    <h2>خدمات الطرف الثالث</h2>
+                    <p>قد يحتوي تطبيقنا على روابط لمواقع ويب أو خدمات تابعة لجهات خارجية. نحن لسنا مسؤولين عن ممارسات
+                        الخصوصية لهذه الأطراف الثالثة. نشجعك على مراجعة سياسات الخصوصية الخاصة بهم.</p>
+                </section>
+
+                <section class="section">
+                    <h2>خصوصية الأطفال</h2>
+                    <p>تطبيقنا غير مخصص للأطفال دون سن 13 عاماً. نحن لا نجمع عن قصد معلومات شخصية من الأطفال دون سن 13
+                        عاماً. إذا كنت تعتقد أننا جمعنا معلومات من طفل دون سن 13 عاماً، يرجى الاتصال بنا على الفور.</p>
+                </section>
+
+                <section class="section">
+                    <h2>التغييرات على سياسة الخصوصية هذه</h2>
+                    <p>قد نقوم بتحديث سياسة الخصوصية هذه من وقت لآخر. سيتم نشر أي تغييرات على هذه الصفحة مع تاريخ مراجعة
+                        محدث. نشجعك على مراجعة سياسة الخصوصية هذه بشكل دوري.</p>
+                </section>
+
+                <section class="section">
+                    <h2>اتصل بنا</h2>
+                    <p>إذا كان لديك أي أسئلة أو مخاوف بشأن سياسة الخصوصية هذه، يرجى الاتصال بنا:</p>
+                    <div class="contact-info">
+                        <p><strong>الهاتف:</strong> <a href="tel:+966557566573" dir="ltr">+966 55 756 6573</a></p>
+                        <p><strong>البريد الإلكتروني:</strong> <a
+                                href="mailto:tariqtaha22@icloud.com">tariqtaha22@icloud.com</a></p>
+                        <p><strong>البريد الإلكتروني:</strong> <a href="mailto:info@as-it.com.sa">info@as-it.com.sa</a>
+                        </p>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 ERP App. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            const enContent = document.getElementById('content-en');
+            const arContent = document.getElementById('content-ar');
+            const body = document.body;
+            const buttons = document.querySelectorAll('.lang-btn');
+
+            if (lang === 'ar') {
+                enContent.classList.add('hidden');
+                arContent.classList.remove('hidden');
+                body.setAttribute('dir', 'rtl');
+                body.setAttribute('lang', 'ar');
+                buttons[0].classList.remove('active');
+                buttons[1].classList.add('active');
+            } else {
+                arContent.classList.add('hidden');
+                enContent.classList.remove('hidden');
+                body.setAttribute('dir', 'ltr');
+                body.setAttribute('lang', 'en');
+                buttons[0].classList.add('active');
+                buttons[1].classList.remove('active');
+            }
+        }
+
+        // Smooth scroll animation
+        document.addEventListener('DOMContentLoaded', function () {
+            const sections = document.querySelectorAll('.section');
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function (entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+
+</html>

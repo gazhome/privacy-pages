@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="User Privacy Choices for ERP App - Manage your privacy preferences">
+    <title>User Privacy Choices - ERP App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Cairo:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #8b5cf6;
+            --accent-color: #ec4899;
+            --success-color: #10b981;
+            --bg-gradient-start: #0f172a;
+            --bg-gradient-end: #1e293b;
+            --text-primary: #f8fafc;
+            --text-secondary: #cbd5e1;
+            --card-bg: rgba(30, 41, 59, 0.6);
+            --card-border: rgba(148, 163, 184, 0.1);
+            --shadow-color: rgba(0, 0, 0, 0.3);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body[dir="rtl"] {
+            font-family: 'Cairo', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            animation: backgroundShift 15s ease infinite;
+            z-index: -1;
+        }
+
+        @keyframes backgroundShift {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.8;
+            }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .language-toggle {
+            position: fixed;
+            top: 2rem;
+            right: 2rem;
+            z-index: 1000;
+            display: flex;
+            gap: 0.5rem;
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            padding: 0.5rem;
+            box-shadow: 0 8px 32px var(--shadow-color);
+        }
+
+        body[dir="rtl"] .language-toggle {
+            right: auto;
+            left: 2rem;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1.25rem;
+            border: none;
+            background: transparent;
+            color: var(--text-secondary);
+            cursor: pointer;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.875rem;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn:hover {
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding-top: 4rem;
+        }
+
+        .logo {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 10px 40px rgba(99, 102, 241, 0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+            font-weight: 400;
+        }
+
+        .content-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 60px var(--shadow-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px var(--shadow-color);
+        }
+
+        .section {
+            margin-bottom: 2.5rem;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        h2::before {
+            content: '';
+            width: 4px;
+            height: 1.75rem;
+            background: linear-gradient(180deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border-radius: 2px;
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .choice-item {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .choice-item:hover {
+            border-color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        body[dir="rtl"] .choice-item:hover {
+            transform: translateX(-5px);
+        }
+
+        .choice-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .choice-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .choice-icon {
+            font-size: 1.5rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(148, 163, 184, 0.3);
+            transition: 0.4s;
+            border-radius: 30px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(30px);
+        }
+
+        .choice-description {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .save-button {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            display: block;
+            margin: 2rem auto 0;
+        }
+
+        .save-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+        }
+
+        .save-button:active {
+            transform: translateY(0);
+        }
+
+        .success-message {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: var(--success-color);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 1.5rem;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+            border: 1px solid rgba(99, 102, 241, 0.2);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-box p {
+            margin: 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem 0 3rem;
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .content-card {
+                padding: 1.5rem;
+                border-radius: 16px;
+            }
+
+            .language-toggle {
+                top: 1rem;
+                right: 1rem;
+            }
+
+            body[dir="rtl"] .language-toggle {
+                left: 1rem;
+            }
+
+            .choice-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="language-toggle">
+        <button class="lang-btn active" onclick="switchLanguage('en')">English</button>
+        <button class="lang-btn" onclick="switchLanguage('ar')">العربية</button>
+    </div>
+
+    <div class="container">
+        <!-- English Version -->
+        <div id="content-en">
+            <header>
+                <div class="logo">⚙️</div>
+                <h1>Privacy Choices</h1>
+                <p class="subtitle">Control how your data is used</p>
+            </header>
+
+            <div class="content-card">
+                <div class="info-box">
+                    <p>Manage your privacy preferences below. You can change these settings at any time. Your choices
+                        will be saved and applied immediately.</p>
+                </div>
+
+                <section class="section">
+                    <h2>Data Collection & Usage</h2>
+
+                    <div class="choice-item">
+                        <div class="choice-header">
+                            <div class="choice-title">
+                                <span class="choice-icon">📊</span>
+                                Analytics & Performance
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="analytics-en" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <p class="choice-description">
+                            Allow us to collect anonymous usage data to improve app performance and user experience.
+                            This helps us understand how features are used and identify areas for improvement.
+                        </p>
+                    </div>
+
+                    <div class="choice-item">
+                        <div class="choice-header">
+                            <div class="choice-title">
+                                <span class="choice-icon">📧</span>
+                                Marketing Communications
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="marketing-en">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <p class="choice-description">
+                            Receive updates about new features, tips, and promotional offers. We promise not to spam you
+                            and you can unsubscribe at any time.
+                        </p>
+                    </div>
+
+                    <div class="choice-item">
+                        <div class="choice-header">
+                            <div class="choice-title">
+                                <span class="choice-icon">🎯</span>
+                                Personalization
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="personalization-en" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <p class="choice-description">
+                            Enable personalized content and recommendations based on your usage patterns. This helps us
+                            provide a more tailored experience.
+                        </p>
+                    </div>
+
+                    <div class="choice-item">
+                        <div class="choice-header">
+                            <div class="choice-title">
+                                <span class="choice-icon">🔔</span>
+                                Push Notifications
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="notifications-en" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <p class="choice-description">
+                            Receive important updates, reminders, and notifications about your account activity. You can
+                            customize notification types in app settings.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>Data Rights</h2>
+                    <p>You have the right to:</p>
+                    <div class="choice-item">
+                        <p class="choice-description">
+                            <strong>Access Your Data:</strong> Request a copy of all personal data we have about
+                            you.<br><br>
+                            <strong>Delete Your Data:</strong> Request permanent deletion of your account and associated
+                            data.<br><br>
+                            <strong>Export Your Data:</strong> Download your data in a portable format.<br><br>
+                            <strong>Correct Your Data:</strong> Update or correct any inaccurate information.
+                        </p>
+                    </div>
+                    <p>To exercise any of these rights, please contact us:</p>
+                    <p style="margin-top: 0.5rem;">
+                        <strong>Phone:</strong> <a href="tel:+966557566573" style="color: var(--primary-color);">+966 55
+                            756 6573</a><br>
+                        <strong>Email:</strong> <a href="mailto:tariqtaha22@icloud.com"
+                            style="color: var(--primary-color);">tariqtaha22@icloud.com</a> or
+                        <a href="mailto:info@as-it.com.sa" style="color: var(--primary-color);">info@as-it.com.sa</a>
+                    </p>
+                </section>
+
+                <button class="save-button" onclick="savePreferences('en')">Save Preferences</button>
+                <div class="success-message" id="success-en">
+                    ✓ Your preferences have been saved successfully!
+                </div>
+            </div>
+        </div>
+
+        <!-- Arabic Version -->
+        <div id="content-ar" class="hidden">
+            <header>
+                <div class="logo">⚙️</div>
+                <h1>خيارات الخصوصية</h1>
+                <p class="subtitle">تحكم في كيفية استخدام بياناتك</p>
+            </header>
+
+            <div class="content-card">
+                <div class="info-box">
+                    <p>قم بإدارة تفضيلات الخصوصية الخاصة بك أدناه. يمكنك تغيير هذه الإعدادات في أي وقت. سيتم حفظ
+                        اختياراتك وتطبيقها على الفور.</p>
+                </div>
+
+                <section class="section">
+                    <h2>جمع البيانات والاستخدام</h2>
+
+                    <div class="choice-item">
+                        <div class="choice-header">
+                            <div class="choice-title">
+                                <span class="choice-icon">📊</span>
+                                التحليلات والأداء
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="analytics-ar" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <p class="choice-description">
+                            السماح لنا بجمع بيانات الاستخدام المجهولة لتحسين أداء التطبيق وتجربة المستخدم. يساعدنا هذا
+                            على فهم كيفية استخدام الميزات وتحديد مجالات التحسين.
+                        </p>
+                    </div>
+
+                    <div class="choice-item">
+                        <div class="choice-header">
+                            <div class="choice-title">
+                                <span class="choice-icon">📧</span>
+                                الاتصالات التسويقية
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="marketing-ar">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <p class="choice-description">
+                            تلقي تحديثات حول الميزات الجديدة والنصائح والعروض الترويجية. نعدك بعدم إرسال رسائل غير مرغوب
+                            فيها ويمكنك إلغاء الاشتراك في أي وقت.
+                        </p>
+                    </div>
+
+                    <div class="choice-item">
+                        <div class="choice-header">
+                            <div class="choice-title">
+                                <span class="choice-icon">🎯</span>
+                                التخصيص
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="personalization-ar" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <p class="choice-description">
+                            تمكين المحتوى والتوصيات المخصصة بناءً على أنماط الاستخدام الخاصة بك. يساعدنا هذا في توفير
+                            تجربة أكثر تخصيصاً.
+                        </p>
+                    </div>
+
+                    <div class="choice-item">
+                        <div class="choice-header">
+                            <div class="choice-title">
+                                <span class="choice-icon">🔔</span>
+                                الإشعارات الفورية
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" id="notifications-ar" checked>
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <p class="choice-description">
+                            تلقي التحديثات المهمة والتذكيرات والإشعارات حول نشاط حسابك. يمكنك تخصيص أنواع الإشعارات في
+                            إعدادات التطبيق.
+                        </p>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2>حقوق البيانات</h2>
+                    <p>لديك الحق في:</p>
+                    <div class="choice-item">
+                        <p class="choice-description">
+                            <strong>الوصول إلى بياناتك:</strong> طلب نسخة من جميع البيانات الشخصية التي لدينا
+                            عنك.<br><br>
+                            <strong>حذف بياناتك:</strong> طلب الحذف الدائم لحسابك والبيانات المرتبطة به.<br><br>
+                            <strong>تصدير بياناتك:</strong> تنزيل بياناتك بتنسيق قابل للنقل.<br><br>
+                            <strong>تصحيح بياناتك:</strong> تحديث أو تصحيح أي معلومات غير دقيقة.
+                        </p>
+                    </div>
+                    <p>لممارسة أي من هذه الحقوق، يرجى الاتصال بنا:</p>
+                    <p style="margin-top: 0.5rem;">
+                        <strong>الهاتف:</strong> <a href="tel:+966557566573" style="color: var(--primary-color);"
+                            dir="ltr">+966 55 756 6573</a><br>
+                        <strong>البريد الإلكتروني:</strong> <a href="mailto:tariqtaha22@icloud.com"
+                            style="color: var(--primary-color);">tariqtaha22@icloud.com</a> أو
+                        <a href="mailto:info@as-it.com.sa" style="color: var(--primary-color);">info@as-it.com.sa</a>
+                    </p>
+                </section>
+
+                <button class="save-button" onclick="savePreferences('ar')">حفظ التفضيلات</button>
+                <div class="success-message" id="success-ar">
+                    ✓ تم حفظ تفضيلاتك بنجاح!
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 ERP App. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            const enContent = document.getElementById('content-en');
+            const arContent = document.getElementById('content-ar');
+            const body = document.body;
+            const buttons = document.querySelectorAll('.lang-btn');
+
+            if (lang === 'ar') {
+                enContent.classList.add('hidden');
+                arContent.classList.remove('hidden');
+                body.setAttribute('dir', 'rtl');
+                body.setAttribute('lang', 'ar');
+                buttons[0].classList.remove('active');
+                buttons[1].classList.add('active');
+            } else {
+                arContent.classList.add('hidden');
+                enContent.classList.remove('hidden');
+                body.setAttribute('dir', 'ltr');
+                body.setAttribute('lang', 'en');
+                buttons[0].classList.add('active');
+                buttons[1].classList.remove('active');
+            }
+        }
+
+        function savePreferences(lang) {
+            // Get checkbox states
+            const preferences = {
+                analytics: document.getElementById(`analytics-${lang}`).checked,
+                marketing: document.getElementById(`marketing-${lang}`).checked,
+                personalization: document.getElementById(`personalization-${lang}`).checked,
+                notifications: document.getElementById(`notifications-${lang}`).checked
+            };
+
+            // Save to localStorage
+            localStorage.setItem('userPrivacyPreferences', JSON.stringify(preferences));
+
+            // Show success message
+            const successMsg = document.getElementById(`success-${lang}`);
+            successMsg.style.display = 'block';
+
+            // Hide after 3 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 3000);
+
+            console.log('Preferences saved:', preferences);
+        }
+
+        // Load saved preferences on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            const saved = localStorage.getItem('userPrivacyPreferences');
+            if (saved) {
+                const preferences = JSON.parse(saved);
+
+                // Apply to both language versions
+                ['en', 'ar'].forEach(lang => {
+                    document.getElementById(`analytics-${lang}`).checked = preferences.analytics;
+                    document.getElementById(`marketing-${lang}`).checked = preferences.marketing;
+                    document.getElementById(`personalization-${lang}`).checked = preferences.personalization;
+                    document.getElementById(`notifications-${lang}`).checked = preferences.notifications;
+                });
+            }
+
+            // Animate sections
+            const sections = document.querySelectorAll('.choice-item');
+            sections.forEach((section, index) => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+
+                setTimeout(() => {
+                    section.style.opacity = '1';
+                    section.style.transform = 'translateY(0)';
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+
+</html>
