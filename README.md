@@ -101,3 +101,4 @@ If you need to customize these pages further or have questions, the HTML files a
 ---
 
 **Note**: These are static HTML pages that work standalone without any server-side requirements. They use vanilla JavaScript for interactivity and store preferences in the browser's local storage.
+# privacy-pages
